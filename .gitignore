@@ -1,0 +1,21 @@
+.DS_Store
+
+# Python bytecode:
+*.py[co]
+
+# Packaging files:
+*.egg*
+dist
+
+# Editor temp files:
+*.swp
+*~
+
+# SQLite3 database files:
+*.db
+
+.idea
+.htaccess
+.DS_Store
+
+db.sqlite3
