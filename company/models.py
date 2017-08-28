@@ -24,6 +24,9 @@ class Company(models.Model):
     phone_number = models.CharField(max_length=PHONE_LIMIT)
     profile_id = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
 
+    def __unicode__(self):
+        return "{}".format(self.company_name)
+
 
 class FundingDetail(models.Model):
     """
@@ -48,7 +51,10 @@ class FundingDetail(models.Model):
     investor = models.ForeignKey(Company, help_text="Company that invested", related_name='investees')
     company = models.ForeignKey(Company, help_text="Company being invested in", related_name='investors')
     amount = models.IntegerField(help_text="Amount invested")
-    stage = models.PositiveIntegerField(choices=STAGE_CHOICES, default=SERIES_A)
+    stage = models.PositiveIntegerField(choices=STAGE_CHOICES)
+
+    def __unicode__(self):
+        return "{}->{}".format(self.investor.company_name, self.company.company_name)
 
 
 class Market(models.Model):
@@ -59,3 +65,6 @@ class Market(models.Model):
 
     company = models.ForeignKey(Company)
     tag = models.CharField(max_length=TAG_LIMIT)
+
+    def __unicode__(self):
+        return "{}->{}".format(self.company.company_name, self.tag)

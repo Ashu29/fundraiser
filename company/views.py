@@ -1,5 +1,6 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin
+from rest_framework.parsers import MultiPartParser, FormParser
 
 from company import serializers, models
 # Create your views here.
