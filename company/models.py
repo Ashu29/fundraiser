@@ -20,7 +20,7 @@ class Company(models.Model):
     website = models.URLField(max_length=CHAR_LIMIT)
     linkedin_url = models.URLField(max_length=CHAR_LIMIT)
     twitter_url = models.URLField(max_length=CHAR_LIMIT)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=PHONE_LIMIT)
     profile_id = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
 

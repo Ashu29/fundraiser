@@ -50,6 +50,16 @@ class CompanySerializer(serializers.ModelSerializer):
             'company_name', 'description', 'logo', 'founded_on',
             'website', 'linkedin_url', 'twitter_url', 'email', 'phone_number', 'profile_id', 'funding_details', 'market')
 
+    def validate_email(self, email):
+        """
+        Method to validate the email of the company
+        :param email: Email in POST request
+        :return: Email to be added for company
+        """
+        if models.Company.objects.filter(email=email).exists():
+            raise serializers.ValidationError("Company with this email already exists")
+        return email
+
     def create(self, validated_data):
         funding_details = validated_data.pop('funding_details', None)
         market_data = validated_data.pop('market', [])
