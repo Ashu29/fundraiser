@@ -1,1 +1,1 @@
-web: gunicorn upgradeUSA.wsgi --log-file -
+web: gunicorn fundraiser.wsgi --log-file -
