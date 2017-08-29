@@ -20,4 +20,6 @@ dist
 
 db.sqlite3
 
-media/
+fundraiser/media/
+
+fundraiser/settings/local.py
